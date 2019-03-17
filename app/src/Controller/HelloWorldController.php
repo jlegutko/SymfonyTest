@@ -1,17 +1,29 @@
-<?php
+<?php // App\Controller\HelloController.php
+//...
 /**
- * Hello World controller.
+ * Index action.
+ *
+ * @param string $name User input
+ *
+ * @return \Symfony\Component\HttpFoundation\Response HTTP response
+ *
+ * @Route(
+ *     "/hello/{name}",
+ *     defaults={"name":"World"},
+ *     requirements={"name": "[a-zA-Z]+"},
+ * )
  */
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class HelloWorldController.
  */
-class HelloWorldController
+class HelloWorldController extends AbstractController
 {
     /**
      * Index action.
@@ -28,6 +40,9 @@ class HelloWorldController
      */
     public function index(string $name): Response
     {
-        return new Response('Hello '.$name.'!');
+        return $this->render(
+            'hello-world/index.html.twig',
+            ['name' => $name]
+        );
     }
 }
