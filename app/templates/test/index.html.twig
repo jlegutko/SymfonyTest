@@ -10,15 +10,16 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Tags</th>
+                <th id="label.id">Id</th>
+                <th id="label.title">Title</th>
+                <th id="label.tags">Tags</th>
                 <th scope="col">
                     Actions
                 </th>
             </tr>
             </thead>
             <tbody>
+
             {% for item in data %}
                 <tr>
                     <td>{{ item.id }}</td>
@@ -35,5 +36,6 @@
             Empty list.
         </p>
     {% endif %}
+    {% trans_default_domain 'app' %}
 
 {% endblock  %}
